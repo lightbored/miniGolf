@@ -47,7 +47,7 @@ public class minigolftest {
     
     // Happy Path Testing
     @Test
-    public final void getCourseList() {
+    public final void getHappyCourseList() {
           String result = "Unknown";
           try {
               result = Main.getCourseList();
@@ -58,7 +58,7 @@ public class minigolftest {
       }
 
     @Test
-    public final void getRoundList() {
+    public final void getHappyRoundList() {
           String result = "Unknown";
           try {
               result = Main.getRoundList();
@@ -69,7 +69,21 @@ public class minigolftest {
       }
 
     @Test
-    public final void getScoreSoFar() {
+    public final void getHappyScoreSoFar() {
+          String result = "Unknown";
+          try {
+              int value;
+              value = Main.scoreSoFar("Augusta National","Jamie");
+              result = Integer.toString(value);
+          } catch (Exception e ) {
+              result = "Exception Thrown:" + e;
+          }
+          assertEquals("", "", result);
+      }
+
+    // Boundry Testing
+    @Test
+    public final void getBoundryScoreSoFar() {
           String result = "Unknown";
           try {
               int value;
@@ -79,7 +93,20 @@ public class minigolftest {
               result = "Exception Thrown:" + e;
           }
           assertEquals("", "", result);
-      }
-
-
+    }
+    
+    // Exception Testing
+    @Test
+    public final void getExceptionScoreSoFar() {
+          String result = "Unknown";
+          try {
+              int value;
+              value = Main.scoreSoFar("River Hills","Jamie");
+              result = Integer.toString(value);
+          } catch (Exception e ) {
+              result = "Exception Thrown:" + e;
+          }
+          assertEquals("", "", result);
+    }
+    
 }
