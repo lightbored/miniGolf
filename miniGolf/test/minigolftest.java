@@ -44,14 +44,42 @@ public class minigolftest {
     //
     // @Test
     // public void hello() {}
+    
+    // Happy Path Testing
     @Test
     public final void getCourseList() {
           String result = "Unknown";
           try {
-              result = newRound.newRound("River Hills", "Jamie");
+              result = Main.getCourseList();
           } catch (Exception e ) {
               result = "Exception Thrown:" + e;
           }
           assertEquals("", "", result);
       }
+
+    @Test
+    public final void getRoundList() {
+          String result = "Unknown";
+          try {
+              result = Main.getRoundList();
+          } catch (Exception e ) {
+              result = "Exception Thrown:" + e;
+          }
+          assertEquals("", "", result);
+      }
+
+    @Test
+    public final void getScoreSoFar() {
+          String result = "Unknown";
+          try {
+              int value;
+              value = Main.scoreSoFar("River Hills","Jamie");
+              result = Integer.toString(value);
+          } catch (Exception e ) {
+              result = "Exception Thrown:" + e;
+          }
+          assertEquals("", "", result);
+      }
+
+
 }
