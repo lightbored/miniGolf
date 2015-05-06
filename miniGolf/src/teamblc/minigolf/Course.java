@@ -10,15 +10,19 @@ package teamblc.minigolf;
  * @author lightbored
  */
 public class Course {
-    private int playerID;
-    private String playerName;
     private String courseName;
-    private int[] score;
+    private int holes;
+    private int[][] par;
 
-/*
-String getName ()
-int getNumberOfHoles ()
-int parForHole ( int hole )
-*/    
-    
+    public String getName() {
+        return this.courseName;
+    }
+
+    public int getNumberOfHoles () {
+        return this.holes;
+    }
+
+    public int parForHole ( int hole ) {
+        return this.par[hole][1];
+    }
 }
