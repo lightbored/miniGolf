@@ -6,8 +6,10 @@
 package teamblc.minigolf;
 
 /**
- *
- * @author lightbored
+ * @author teamBLC
+ * @author Corey Gunter
+ * @author Jamie Banas
+ * @author Chris Maxey
  */
 public class Main {
     /**
@@ -40,10 +42,13 @@ public class Main {
     
     }
 
+    static String getCourseList (){
+        
+        return "list";
+    }
     
-    /*
-Getters for the properties: course list, round list.
-    */
-    
-    
+    static String getRoundList (){
+        
+        return "list";
+    }    
 }

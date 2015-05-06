@@ -6,8 +6,10 @@
 package teamblc.minigolf;
 
 /**
- *
- * @author lightbored
+ * @author teamBLC
+ * @author Corey Gunter
+ * @author Jamie Banas
+ * @author Chris Maxey
  */
 public class Round {
     
