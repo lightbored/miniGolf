@@ -11,6 +11,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import teamblc.minigolf.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author teamBLC
@@ -19,7 +21,11 @@ import teamblc.minigolf.*;
  * @author Chris Maxey
  */
 public class minigolftest {
-    
+    private List<String> courseList = new ArrayList<>();
+    private Round legalRound1;
+    private int [] legalRound1CorrectScores;
+    private Round badRound;
+
     public minigolftest() {
     }
     
@@ -33,6 +39,7 @@ public class minigolftest {
     
     @Before
     public void setUp() {
+    
     }
     
     @After
@@ -47,54 +54,83 @@ public class minigolftest {
     
     // Happy Path Testing
     @Test
-    public final void getHappyCourseList() {
+    public final void setAndGetPlayer() {
           String result = "Unknown";
           try {
-              result = Main.getCourseList();
+              legalRound1.setPlayer("Jamie");
+              result = legalRound1.getPlayer();
           } catch (Exception e ) {
               result = "Exception Thrown:" + e;
           }
-          assertEquals("", "", result);
+          assertEquals("Jamie", result);
       }
 
     @Test
-    public final void getHappyRoundList() {
+    public final void setAndGetCourse() {
           String result = "Unknown";
           try {
-              result = Main.getRoundList();
+              legalRound1.setCourse("Pine Valley");
+              result = legalRound1.getCourse();
           } catch (Exception e ) {
               result = "Exception Thrown:" + e;
           }
-          assertEquals("", "", result);
+          assertEquals("Pine Valley", result);
       }
 
     @Test
-    public final void getHappyScoreSoFar() {
+    public final void getCurrentScore() {
           String result = "Unknown";
           try {
               int value;
-              value = Main.scoreSoFar("Augusta National","Jamie");
+              legalRound1.enterScore(2);
+              legalRound1.enterScore(3);
+              value = legalRound1.currentScore();
               result = Integer.toString(value);
           } catch (Exception e ) {
               result = "Exception Thrown:" + e;
           }
-          assertEquals("", "", result);
+          assertEquals("5", result);
       }
+
+    @Test
+    public final void testNumberOfHolesPlayed() {
+          String result = "Unknown";
+          try {
+              int value;
+              legalRound1.enterScore(2);
+              legalRound1.enterScore(3);
+              value = legalRound1.numberOfHolesPlayed();
+              result = Integer.toString(value);
+          } catch (Exception e ) {
+              result = "Exception Thrown:" + e;
+          }
+          assertEquals(2, result);
+    }
 
     // Boundry Testing
+    
     @Test
-    public final void getBoundryScoreSoFar() {
+    public final void testFullRound() {
           String result = "Unknown";
           try {
               int value;
-              value = Main.scoreSoFar("River Hills","Jamie");
+              legalRound1.enterScore(2);
+              legalRound1.enterScore(3);
+              legalRound1.enterScore(3);
+              legalRound1.enterScore(4);
+              legalRound1.enterScore(3);
+              legalRound1.enterScore(2);
+              legalRound1.enterScore(4);
+              legalRound1.enterScore(3);
+              legalRound1.enterScore(4);
+              value = legalRound1.numberOfHolesPlayed();
               result = Integer.toString(value);
           } catch (Exception e ) {
               result = "Exception Thrown:" + e;
           }
-          assertEquals("", "", result);
+          assertEquals(9, result);
     }
-    
+
     // Exception Testing
     @Test
     public final void getExceptionScoreSoFar() {
