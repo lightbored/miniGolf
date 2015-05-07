@@ -13,19 +13,26 @@ package teamblc.minigolf;
  */
 public class Round {
     
-    private int playerID;
-    private String playerName;
-    private String courseName;
-    private int[] score;
+    private String playerName;  // Hold player name
+    private String courseName;  // Hold course name
+    private int[][] score;      // Hold hole number and score ([0] not used)
         
-    public void setPlayer ( int id, String name ) {
-       this.playerID = id;
-       this.playerName = name;
+    public void setPlayer ( String name ) {
+        this.playerName = name;
     }
 
-    public void setCourse ( String name ) {
-       this.courseName = name;
+    public String getPlayer () {
+        return this.playerName;
     }
+    
+    public void setCourse ( String name ) {
+        this.courseName = name;
+    }
+
+    public String getCourse () {
+        return this.courseName;
+    }
+
     
     public String toString () {
        return "Course: " + courseName + "\nPlayer Name: " + this.playerName;
@@ -42,11 +49,10 @@ public class Round {
     }    
     
     public synchronized void enterScore(int strokes) { //Enter a score for the next hole.  (Note the current design doesn't allow a player to skip holes, they must be played in order);
-      // some thread critical stuff
-      // here
+        
     } 
     
-    public int[] scoreDetail() {
+    public int[][] scoreDetail() {
         
         return this.score;
     }
